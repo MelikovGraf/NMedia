@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+<!--    Avatar-->
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_post"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="48dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/authorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/authorDate"
+        app:layout_constraintEnd_toStartOf="@id/menu"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        tools:text="Author Name Surname" />
+
+<!--    Date-->
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/authorDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/authorName"
+        tools:text="19.04.2022" />
+
+<!--    Text-->
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/authorText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatar"
+        tools:text="@tools:sample/lorem/random" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/likesCount"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/repost"
+        app:layout_constraintStart_toEndOf="@id/heart"
+        app:layout_constraintTop_toTopOf="@id/heart"
+        tools:text="500K" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/repostCount"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/repost"
+        app:layout_constraintTop_toTopOf="@id/heart"
+        tools:text="500K" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/menu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_baseline_list_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/heart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/ic_baseline_favorite_border_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/repost"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/ic_baseline_reply_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/likesCount" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/eyes"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/ic_baseline_remove_red_eye_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vissionCount" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/vissionCount"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/heart"
+        tools:text="500K" />
+
+<!--    Barrier-->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,authorText,authorName,authorDate,menu" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,authorName,authorDate,menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
