@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
-<!--    Avatar-->
+    <!--    Avatar-->
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
         android:contentDescription="@string/description_post"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="48dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="@drawable/ic_avatar" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--authorName-->
+    <TextView
         android:id="@+id/authorName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -32,8 +33,8 @@
         app:layout_constraintTop_toTopOf="@id/avatar"
         tools:text="Author Name Surname" />
 
-<!--    Date-->
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--authorDate-->
+    <TextView
         android:id="@+id/authorDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -45,95 +46,121 @@
         app:layout_constraintTop_toBottomOf="@id/authorName"
         tools:text="19.04.2022" />
 
-<!--    Text-->
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--authorText-->
+    <TextView
         android:id="@+id/authorText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ellipsize="end"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/heart"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textEyes"
+        app:layout_constraintEnd_toEndOf="@id/textEyes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="@tools:sample/lorem/random" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--likesCount-->
+    <TextView
         android:id="@+id/likesCount"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="46dp"
+        android:layout_height="32dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/repost"
-        app:layout_constraintStart_toEndOf="@id/heart"
-        app:layout_constraintTop_toTopOf="@id/heart"
-        tools:text="500K" />
+        app:layout_constraintEnd_toStartOf="@id/repostIcon"
+        app:layout_constraintStart_toEndOf="@id/likeIcon"
+        app:layout_constraintTop_toTopOf="@id/likeIcon"
+        tools:text="" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--repostCount-->
+    <TextView
         android:id="@+id/repostCount"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="46dp"
+        android:layout_height="32dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/repost"
-        app:layout_constraintTop_toTopOf="@id/heart"
-        tools:text="500K" />
+        app:layout_constraintStart_toEndOf="@id/repostIcon"
+        app:layout_constraintTop_toTopOf="@id/likeIcon"
+        tools:text="" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--Мenu-->
+    <ImageButton
         android:id="@+id/menu"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@drawable/ic_baseline_list_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/heart"
+    <!--    likeIcon-->
+    <ImageButton
+        android:id="@+id/likeIcon"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:contentDescription="@string/description_post_like"
         android:background="@drawable/ic_baseline_favorite_border_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/repost"
+    <!--    repostIcon-->
+    <ImageButton
+        android:id="@+id/repostIcon"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/ic_baseline_reply_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/likesCount" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <!--    eyesIcon-->
+    <ImageButton
         android:id="@+id/eyes"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/ic_baseline_remove_red_eye_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vissionCount" />
+        app:layout_constraintEnd_toStartOf="@id/textEyes" />
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/vissionCount"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <!-- textEyes-->
+    <TextView
+        android:id="@+id/textEyes"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/heart"
+        app:layout_constraintTop_toTopOf="@id/likeIcon"
         tools:text="500K" />
 
-<!--    Barrier-->
+    <!--    BarrierBottom-->
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierBottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,authorText,authorName,authorDate,menu" />
+        app:constraint_referenced_ids="avatar,authorText,authorName,authorDate,menu"
+        app:layout_constraintEnd_toStartOf="@id/barrierEnd" />
 
+    <!--    BarrierTop-->
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTop"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,authorName,authorDate,menu" />
+        app:constraint_referenced_ids="avatar,authorName,authorDate,menu"
+        app:layout_constraintEnd_toStartOf="@id/barrierEnd" />
+
+    <!--    BarrierRight-->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end" />
+
+    <!--    BarrierLeft-->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="start"
+        app:layout_constraintTop_toTopOf="@id/avatar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
