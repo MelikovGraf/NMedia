@@ -58,12 +58,14 @@ internal class PostsAdapter(
                 authorName.text = post.author
                 authorDate.text = post.date
                 authorText.text = post.content
-                if (post.likedByMe) {likesCount.text = getCount(post.likes + 1)}
-                else likesCount.text = getCount(post.likes)
-                repostCount.text = getCount(post.repost)
                 if (post.likedByMe) {
+                    likesCount.text = getCount(post.likes + 1)
                     likeIcon.setImageResource(R.drawable.ic_like)
-                } else likeIcon.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                } else {
+                    likesCount.text = getCount(post.likes)
+                    likeIcon.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                }
+                repostCount.text = getCount(post.repost)
             }
         }
     }
