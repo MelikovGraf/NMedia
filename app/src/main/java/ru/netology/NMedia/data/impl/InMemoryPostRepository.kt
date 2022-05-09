@@ -4,17 +4,19 @@ import androidx.lifecycle.MutableLiveData
 
 class InMemoryPostRepository : PostRepository {
 
+    private var nextID = GENERATED_POSTS_AMOUNT.toLong()
+
     private val posts
         get() = checkNotNull(data.value) {
             "Check not null"
         }
 
     override val data = MutableLiveData(
-        List(10) { index ->
+        List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
                 id = index + 1L,
                 author = "Graf Melikov",
-                content = "$index. Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+                content = "$index. Привет",
                 date = "30 April 18:36",
                 likes = 0,
                 repost = 0,
@@ -34,5 +36,31 @@ class InMemoryPostRepository : PostRepository {
             if (it.id != postId) it
             else it.copy(repost = it.repost + 1)
         }
+    }
+
+    override fun save(post: Post) {
+        if (post.id == PostRepository.NEW_POST_ID) insert(post) else update(post)
+    }
+
+
+    private fun update(post: Post) {
+        data.value = posts.map {
+            if (it.id == post.id) post else it
+        }
+    }
+
+    private fun insert(post: Post) {
+        data.value = listOf(
+            post.copy(id = ++nextID)
+        ) + posts
+    }
+
+    private companion object {
+        const val GENERATED_POSTS_AMOUNT = 1000
+    }
+
+    override fun delete(postId: Long) {
+        //Получаем список постов - фильтруем - остаются, которые не являются постом, который нужно удалить
+        data.value = posts.filter { it.id != postId }
     }
 }

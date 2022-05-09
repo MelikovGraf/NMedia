@@ -1,7 +1,8 @@
-package ru.netology.NMedia.data.impl
+package ru.netology.NMedia.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,14 +11,13 @@ import ru.netology.NMedia.data.Post
 import ru.netology.NMedia.databinding.ItemBinding
 
 internal class PostsAdapter(
-    private val onLikeClicked: (Post) -> Unit,
-    private val onRepostClicked: (Post) -> Unit,
+    private val interactionListener: PostInteractionListener,
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, onLikeClicked, onRepostClicked)
+        return ViewHolder(binding, interactionListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,11 +27,29 @@ internal class PostsAdapter(
 
     class ViewHolder(
         private val binding: ItemBinding,
-        onLikeClicked: (Post) -> Unit,
-        onRepostClicked: (Post) -> Unit,
+        listener: PostInteractionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
+
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.menu).apply {
+                inflate(R.menu.options_menu)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onRemoveClicked(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            listener.onEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
 
         private fun getCount(value: Int): String {
             val thousand = value.toDouble() / 1000
@@ -48,8 +66,9 @@ internal class PostsAdapter(
         }
 
         init {
-            binding.likeIcon.setOnClickListener { onLikeClicked(post) }
-            binding.repostIcon.setOnClickListener { onRepostClicked(post) }
+            binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
+            binding.repostIcon.setOnClickListener { listener.onRepostClicked(post) }
+            binding.menu.setOnClickListener { popupMenu.show() }
         }
 
         fun bind(post: Post) {
@@ -58,14 +77,11 @@ internal class PostsAdapter(
                 authorName.text = post.author
                 authorDate.text = post.date
                 authorText.text = post.content
-                if (post.likedByMe) {
-                    likesCount.text = getCount(post.likes + 1)
-                    likeIcon.setImageResource(R.drawable.ic_like)
-                } else {
-                    likesCount.text = getCount(post.likes)
-                    likeIcon.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-                }
-                repostCount.text = getCount(post.repost)
+                likeIcon.text = if (post.likedByMe) {
+                    getCount(post.likes + 1)
+                } else { getCount(post.likes) }
+                likeIcon.isChecked = post.likedByMe
+                repostIcon.text = getCount(post.repost+1)
             }
         }
     }

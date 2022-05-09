@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.168" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1575" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_list_24.xml" value="0.1485" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1575" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_like_24dp.xml" value="0.168" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_save.xml" value="0.1485" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/likes.xml" value="0.1575" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/menu.xml" value="0.1575" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/item.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/item.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/menu/options_menu.xml" value="0.209375" />
       </map>
     </option>
   </component>
