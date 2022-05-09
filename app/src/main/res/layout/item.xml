@@ -11,12 +11,12 @@
         android:id="@+id/avatar"
         android:layout_width="144dp"
         android:layout_height="144dp"
-        android:contentDescription="@string/description_post"
+        android:background="@drawable/ic_avatar"
+        android:contentDescription="@string/description_post_author_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="48dp"
-        android:background="@drawable/ic_avatar" />
+        tools:layout_editor_absoluteY="48dp" />
 
     <!--authorName-->
     <TextView
@@ -50,85 +50,63 @@
     <TextView
         android:id="@+id/authorText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="120dp"
         android:ellipsize="end"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/textEyes"
-        app:layout_constraintEnd_toEndOf="@id/textEyes"
+        app:layout_constraintBottom_toTopOf="@id/eyes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="@tools:sample/lorem/random" />
 
-    <!--likesCount-->
-    <TextView
-        android:id="@+id/likesCount"
-        android:layout_width="46dp"
-        android:layout_height="32dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/repostIcon"
-        app:layout_constraintStart_toEndOf="@id/likeIcon"
-        app:layout_constraintTop_toTopOf="@id/likeIcon"
-        tools:text="" />
-
-    <!--repostCount-->
-    <TextView
-        android:id="@+id/repostCount"
-        android:layout_width="46dp"
-        android:layout_height="32dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/repostIcon"
-        app:layout_constraintTop_toTopOf="@id/likeIcon"
-        tools:text="" />
-
     <!--Мenu-->
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/ic_baseline_list_24"
+        style="@style/Widget.AppTheme.Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:contentDescription="@string/description_post_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--    likeIcon-->
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/likeIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        style="@style/Widget.AppTheme.Like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
         android:contentDescription="@string/description_post_like"
-        android:background="@drawable/ic_baseline_favorite_border_24"
+        android:text="@string/value_iconText"
+        android:textColor="@color/eyes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--    repostIcon-->
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/repostIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/ic_baseline_reply_24"
+        style="@style/Widget.AppTheme.Share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:contentDescription="@string/description_post_share"
+        android:text="@string/value_iconText"
+        android:textColor="@color/eyes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/likesCount" />
+        app:layout_constraintStart_toEndOf="@id/likeIcon" />
 
     <!--    eyesIcon-->
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/eyes"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/ic_baseline_remove_red_eye_24"
+        style="@style/Widget.AppTheme.Eyes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_post_eyes"
+        android:text="@string/value_iconText"
+        android:textColor="@color/eyes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textEyes" />
-
-    <!-- textEyes-->
-    <TextView
-        android:id="@+id/textEyes"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/likeIcon"
-        tools:text="500K" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--    BarrierBottom-->
     <androidx.constraintlayout.widget.Barrier
