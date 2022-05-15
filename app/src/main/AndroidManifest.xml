@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.netology.NMedia">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <application
@@ -11,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NMedia">
         <activity
-            android:name=".MainActivity"
+            android:name=".acitivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".acitivity.IntentHandlerActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".acitivity.PostContentActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

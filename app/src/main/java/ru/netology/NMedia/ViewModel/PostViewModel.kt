@@ -2,6 +2,7 @@ package ru.netology.NMedia.ViewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import no.nordicsemi.android.blinky.viewmodels.SingleLiveEvent
 import ru.netology.NMedia.Adapter.PostInteractionListener
 import ru.netology.NMedia.data.InMemoryPostRepository
 import ru.netology.NMedia.data.Post
@@ -10,9 +11,17 @@ import ru.netology.NMedia.data.PostRepository
 class PostViewModel : ViewModel(), PostInteractionListener {
     private val repository: PostRepository = InMemoryPostRepository()
 
+    val sharePostContent = SingleLiveEvent<String>()
+
+    val navigateToPostContentEvent = SingleLiveEvent<Unit>()
+
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?>(null)
+
+    fun onAddClicked() {
+        navigateToPostContentEvent.call()
+    }
 
     fun onSaveClicked(content: String) {
         if (content.isBlank()) return
@@ -33,11 +42,14 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     override fun onLikeClicked(post: Post) = repository.like(post.id)
 
-    override fun onRepostClicked(post: Post) = repository.repost(post.id)
-
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
+
+    override fun onShareClicked(post: Post) {
+        sharePostContent.value = post.content
+    }
 
     override fun onEditClicked(post: Post) {
         currentPost.value = post
     }
+
 }

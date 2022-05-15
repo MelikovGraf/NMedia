@@ -67,8 +67,8 @@ internal class PostsAdapter(
 
         init {
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
-            binding.repostIcon.setOnClickListener { listener.onRepostClicked(post) }
             binding.menu.setOnClickListener { popupMenu.show() }
+            binding.repostIcon.setOnClickListener { listener.onShareClicked(post) }
         }
 
         fun bind(post: Post) {
@@ -79,9 +79,11 @@ internal class PostsAdapter(
                 authorText.text = post.content
                 likeIcon.text = if (post.likedByMe) {
                     getCount(post.likes + 1)
-                } else { getCount(post.likes) }
+                } else {
+                    getCount(post.likes)
+                }
                 likeIcon.isChecked = post.likedByMe
-                repostIcon.text = getCount(post.repost+1)
+                repostIcon.text = getCount(post.repost + 1)
             }
         }
     }
