@@ -1,5 +1,7 @@
 package ru.netology.NMedia.ViewModel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import no.nordicsemi.android.blinky.viewmodels.SingleLiveEvent
@@ -7,9 +9,14 @@ import ru.netology.NMedia.Adapter.PostInteractionListener
 import ru.netology.NMedia.data.InMemoryPostRepository
 import ru.netology.NMedia.data.Post
 import ru.netology.NMedia.data.PostRepository
+import ru.netology.NMedia.data.impl.FailedPrefsPostRepository
+import ru.netology.NMedia.data.impl.SharedPrefsPostRepository
 
-class PostViewModel : ViewModel(), PostInteractionListener {
-    private val repository: PostRepository = InMemoryPostRepository()
+class PostViewModel(
+    application: Application
+) : AndroidViewModel(application), PostInteractionListener {
+    private val repository: PostRepository =
+        FailedPrefsPostRepository(application)
 
     val sharePostContent = SingleLiveEvent<String>()
 
@@ -30,6 +37,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         ) ?: Post(
             id = PostRepository.NEW_POST_ID,
             author = "Graf Melikov",
+            video = false,
             content = "Hello",
             date = "06 May 17:36",
             likes = 0,

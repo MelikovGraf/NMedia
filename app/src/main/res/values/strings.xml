@@ -15,5 +15,6 @@
     <string name="chooser_share_post">Share Post</string>
     <string name="chooser_edit_post">Edit post</string>
     <string name="add_post">Add post</string>
+    <string name="video_post">Video</string>
     <string name="error_empty_content">Content can\'t be empty</string>
 </resources>

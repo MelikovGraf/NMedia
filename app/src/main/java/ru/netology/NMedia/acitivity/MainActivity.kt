@@ -1,11 +1,15 @@
 package ru.netology.NMedia.acitivity
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import com.google.android.material.snackbar.Snackbar
 import ru.netology.NMedia.Adapter.PostsAdapter
 import ru.netology.NMedia.R
 import ru.netology.NMedia.ViewModel.PostViewModel
@@ -49,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             postContent ?: return@registerForActivityResult
             viewModel.onSaveClicked(postContent)
         }
+
         viewModel.navigateToPostContentEvent.observe(this) {
             postContentActivityLauncher.launch()
         }
@@ -78,5 +83,18 @@ class MainActivity : AppCompatActivity() {
                 viewModel.onSaveClicked(content)
             }
         }
+
+
+
+//        fun videoOnClick(view: View) {
+//            fun openWebPage(url: String) {
+//                val webpage: Uri = Uri.parse(url)
+//                val intent = Intent(Intent.ACTION_VIEW, webpage)
+//                if (intent.resolveActivity(packageManager) != null) {
+//                    startActivity(intent)
+//                }
+//            }
+//            openWebPage("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+//        }
     }
 }
