@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 data class Post(
     val id: Long,
     var author: String,
-    val video: Boolean,
     var content: String,
     var date: String,
     var likes: Int = 0,

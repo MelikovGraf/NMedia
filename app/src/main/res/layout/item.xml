@@ -56,32 +56,9 @@
         app:layout_constraintBottom_toTopOf="@id/eyes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/videoIcon"
-        app:layout_constraintVertical_bias="0.552"
+        app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="@tools:sample/lorem/random" />
 
-    <ImageView
-        android:id="@+id/videoIcon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="videoOnclick"
-        android:background="@drawable/ic_frap_freedom_flag_1"
-        android:contentDescription="@string/video_post"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar"/>
-
-    <ImageView
-        android:id="@+id/videoIconPlay"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
-        android:onClick="videoOnClick"
-        android:backgroundTint="@color/black"
-        android:background="@drawable/ic_baseline_play_circle_filled_24"
-        android:contentDescription="@string/video_post"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintTop_toTopOf="@id/videoIcon"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"

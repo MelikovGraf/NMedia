@@ -1,13 +1,13 @@
-package ru.netology.NMedia.acitivity
+package ru.netology.NMedia.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.NMedia.databinding.IntentResourceBinding
 
-class videoActivity : AppCompatActivity() {
+class IntentHandlerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,7 +20,7 @@ class videoActivity : AppCompatActivity() {
         val text = intent.getStringExtra(Intent.EXTRA_TEXT)
         if (text.isNullOrBlank()) return
 
-        Snackbar.make(binding.root, text, BaseTransientBottomBar.LENGTH_INDEFINITE)
+        Snackbar.make(binding.root, text, LENGTH_INDEFINITE)
             .setAction(android.R.string.ok) { finish() }
             .show()
     }
