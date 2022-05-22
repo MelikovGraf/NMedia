@@ -91,7 +91,6 @@ class SharedPrefsPostRepository(
     }
 
     private companion object {
-        const val GENERATED_POSTS_AMOUNT = 1000
         const val POSTS_PREFS_KEY = "posts"
         const val NEXT_ID = "nextID"
     }

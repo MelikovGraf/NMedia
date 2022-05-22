@@ -12,8 +12,6 @@ import ru.netology.NMedia.Adapter.PostsAdapter
 import ru.netology.NMedia.R
 import ru.netology.NMedia.ViewModel.PostViewModel
 import ru.netology.NMedia.databinding.FeedFragmentBinding
-import ru.netology.NMedia.databinding.SinglePostBinding
-import ru.netology.NMedia.ui.PostContentFragment.Companion.REQUEST_KEY
 
 class FeedFragment : Fragment() {
 

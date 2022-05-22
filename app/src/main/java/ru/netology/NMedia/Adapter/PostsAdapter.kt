@@ -76,7 +76,7 @@ internal class PostsAdapter(
             this.post = post
             with(binding) {
                 authorName.text = post.author
-                authorDate.text = post.date
+                authorDate.text = post.published
                 authorText.text = post.content
                 likeIcon.text = if (post.likedByMe) {
                     getCount(post.likes + 1)

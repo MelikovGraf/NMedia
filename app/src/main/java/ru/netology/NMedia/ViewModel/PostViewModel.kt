@@ -8,12 +8,18 @@ import ru.netology.NMedia.Adapter.PostInteractionListener
 import ru.netology.NMedia.data.Post
 import ru.netology.NMedia.data.PostRepository
 import ru.netology.NMedia.data.impl.FailedPrefsPostRepository
+import ru.netology.NMedia.data.impl.SQLiteRepository
+import ru.netology.NMedia.db.AppDB
 
 class PostViewModel(
     application: Application
 ) : AndroidViewModel(application), PostInteractionListener {
     private val repository: PostRepository =
-        FailedPrefsPostRepository(application)
+        SQLiteRepository(
+            dao = AppDB.getInstance(
+                context = application
+            ).postDao
+        )
 
     val sharePostContent = SingleLiveEvent<String>()
 
@@ -35,7 +41,7 @@ class PostViewModel(
             id = PostRepository.NEW_POST_ID,
             author = "Graf Melikov",
             content = "Hello",
-            date = "06 May 17:36",
+            published = "06 May 17:36",
             likes = 0,
             repost = 0,
             likedByMe = false

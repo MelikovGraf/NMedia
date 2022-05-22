@@ -17,7 +17,7 @@ class InMemoryPostRepository : PostRepository {
                 id = index + 1L,
                 author = "Graf Melikov",
                 content = "$index. Привет",
-                date = "30 April 18:36",
+                published = "30 April 18:36",
                 likes = 0,
                 repost = 0,
                 likedByMe = false
