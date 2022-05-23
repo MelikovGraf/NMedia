@@ -1,4 +1,4 @@
-package ru.netology.NMedia.ui
+package ru.netology.nmedia.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.NMedia.Adapter.PostsAdapter
-import ru.netology.NMedia.R
-import ru.netology.NMedia.ViewModel.PostViewModel
-import ru.netology.NMedia.databinding.FeedFragmentBinding
+import ru.netology.nmedia.Adapter.PostsAdapter
+import ru.netology.nmedia.R
+import ru.netology.nmedia.ViewModel.PostViewModel
+import ru.netology.nmedia.databinding.FeedFragmentBinding
 
 class FeedFragment : Fragment() {
 
@@ -42,10 +42,6 @@ class FeedFragment : Fragment() {
             findNavController().navigate(directions)
         }
 
-        viewModel.navigateToPostContentEvent.observe(this) { initialContent ->
-            val directions = FeedFragmentDirections.actionFeedFragmentToSinglePost(initialContent)
-            findNavController().navigate(directions)
-        }
     }
 
     override fun onCreateView(

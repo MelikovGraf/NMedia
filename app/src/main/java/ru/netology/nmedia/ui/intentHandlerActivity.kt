@@ -1,11 +1,11 @@
-package ru.netology.NMedia.ui
+package ru.netology.nmedia.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
-import ru.netology.NMedia.databinding.IntentResourceBinding
+import ru.netology.nmedia.databinding.IntentResourceBinding
 
 class IntentHandlerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

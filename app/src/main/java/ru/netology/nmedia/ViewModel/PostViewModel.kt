@@ -1,21 +1,20 @@
-package ru.netology.NMedia.ViewModel
+package ru.netology.nmedia.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import no.nordicsemi.android.blinky.viewmodels.SingleLiveEvent
-import ru.netology.NMedia.Adapter.PostInteractionListener
-import ru.netology.NMedia.data.Post
-import ru.netology.NMedia.data.PostRepository
-import ru.netology.NMedia.data.impl.FailedPrefsPostRepository
-import ru.netology.NMedia.data.impl.SQLiteRepository
-import ru.netology.NMedia.db.AppDB
+import ru.netology.nmedia.Adapter.PostInteractionListener
+import ru.netology.nmedia.data.Post
+import ru.netology.nmedia.data.PostRepository
+import ru.netology.nmedia.data.impl.PostRepositoryImpl
+import ru.netology.nmedia.db.AppDB
 
 class PostViewModel(
     application: Application
 ) : AndroidViewModel(application), PostInteractionListener {
     private val repository: PostRepository =
-        SQLiteRepository(
+        PostRepositoryImpl(
             dao = AppDB.getInstance(
                 context = application
             ).postDao

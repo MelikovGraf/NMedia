@@ -1,4 +1,4 @@
-package ru.netology.NMedia.ui
+package ru.netology.nmedia.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import ru.netology.NMedia.databinding.PostContentFragmentBinding
+import ru.netology.nmedia.databinding.PostContentFragmentBinding
 
 
 class PostContentFragment : Fragment() {

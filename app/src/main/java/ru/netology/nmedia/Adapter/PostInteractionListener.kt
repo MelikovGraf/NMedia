@@ -1,6 +1,6 @@
-package ru.netology.NMedia.Adapter
+package ru.netology.nmedia.Adapter
 
-import ru.netology.NMedia.data.Post
+import ru.netology.nmedia.data.Post
 
 interface PostInteractionListener {
 
