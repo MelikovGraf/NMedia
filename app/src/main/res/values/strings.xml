@@ -17,4 +17,7 @@
     <string name="add_post">Add post</string>
     <string name="video_post">Video</string>
     <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="channel_remote_name">channel_remote_name</string>
+    <string name="notification_user_liked">User %1$s liked %$2s\'s post</string>
+    <string name="channel_remote_description">channel_remote_description</string>
 </resources>
