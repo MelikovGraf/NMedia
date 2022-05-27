@@ -1,7 +1,6 @@
 package ru.netology.nmedia.Service
 
 import android.annotation.SuppressLint
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -12,7 +11,6 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
-import com.google.firebase.messaging.NotificationParams
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
 import ru.netology.nmedia.R
@@ -24,7 +22,7 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
 
     override fun onCreate() {
         super.onCreate()
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.channel_remote_name)
             val descriptionText = getString(R.string.channel_remote_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -36,18 +34,16 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
         }
     }
 
-    constructor(parcel: Parcel) : this() {
-    }
-
     //метод вызывается, когда приходит пуш в приложение
     override fun onMessageReceived(message: RemoteMessage) {
         val data = message.data
         //из поля ДАТА вытаскиваем АКТИОН и интерпретируем контент
         val serializedAction = data[Action.KEY] ?: return
-        val action = Action.values().find {it.key == serializedAction } ?: return
+        val action = Action.values().find { it.key == serializedAction } ?: return
 
-        when(action) {
+        when (action) {
             Action.Like -> handleLikeAction(data[CONTENT_KEY] ?: return)
+            Action.NewPost -> handleNewPostAction(data[CONTENT_KEY] ?: return)
         }
     }
 
@@ -56,19 +52,11 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
         Log.d("onNewToken", token)
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
     @SuppressLint("StringFormatInvalid")
     private fun handleLikeAction(content: String) {
         val likeContent = gson.fromJson(content, Like::class.java)
 
-        val notification = NotificationCompat.Builder(this,CHANNEL_ID)
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(
                 getString(
@@ -77,6 +65,26 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
                     likeContent.postAuthor
                 )
             )
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .build()
+        NotificationManagerCompat.from(this)
+            .notify(Random.nextInt(100000), notification)
+    }
+
+    @SuppressLint("StringFormatInvalid")
+    private fun handleNewPostAction(content: String) {
+        val postContent = gson.fromJson(content, NewPost::class.java)
+
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(
+                getString(
+                    R.string.notification_new_post,
+                    postContent.userName,
+                    postContent.postAuthor
+                )
+            )
+            .setContentText(postContent.postAuthor)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
         NotificationManagerCompat.from(this)
@@ -96,4 +104,13 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
             return arrayOfNulls(size)
         }
     }
+
+    constructor(parcel: Parcel) : this() {
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {}
 }

@@ -11,4 +11,5 @@ data class Post(
     var likes: Int = 0,
     var repost: Int = 0,
     var likedByMe: Boolean = false,
+    val video: String? = null
 )
