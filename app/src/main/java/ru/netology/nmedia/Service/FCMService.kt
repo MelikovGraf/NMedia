@@ -86,7 +86,10 @@ class FCMService() : FirebaseMessagingService(), Parcelable {
             )
             .setContentText(postContent.postAuthor)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setStyle(NotificationCompat.BigTextStyle()
+                .bigText(postContent.postAuthor))
             .build()
+
         NotificationManagerCompat.from(this)
             .notify(Random.nextInt(100000), notification)
     }
