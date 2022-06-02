@@ -22,4 +22,6 @@
     <string name="notification_new_post">Пользователь %1$s опубликовал новый пост: %$2s\'s </string>
     <string name="channel_remote_name">Сервер передал данные</string>
     <string name="channel_remote_description">Сервер передал данные вот такие</string>
+    <string name="description_favorites">Избранное</string>
+    <string name="description_search">Поиск</string>
 </resources>

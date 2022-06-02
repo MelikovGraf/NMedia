@@ -24,6 +24,8 @@ class PostViewModel(
 
     val navigateToPostContentEvent = SingleLiveEvent<String>()
 
+    val navigateToReceptEvent = SingleLiveEvent<String>()
+
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?>(null)
