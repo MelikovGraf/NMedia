@@ -12,7 +12,6 @@ import ru.netology.nmedia.Adapter.PostsAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.FeedFragmentBinding
-import ru.netology.nmedia.ui.FeedFragmentDirections.Companion.toPostContentFragment
 
 class FeedFragment : Fragment() {
 
@@ -42,12 +41,6 @@ class FeedFragment : Fragment() {
             val directions = FeedFragmentDirections.toPostContentFragment(initialContent)
             findNavController().navigate(directions)
         }
-
-        viewModel.navigateToReceptEvent.observe(this) {initialContent ->
-            val directions = ReceptMainFragmentDirections.toPostContentFragment(initialContent)
-            findNavController().navigate(directions)
-        }
-
     }
 
     override fun onCreateView(

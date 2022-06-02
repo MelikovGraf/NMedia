@@ -35,14 +35,14 @@
         <item name="android:minHeight">@dimen/icon</item>
     </style>
 
-    <style name="Widget.AppTheme.Favorites" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+    <style name="Widget.AppTheme.Search" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="icon">@drawable/ic_search</item>
         <item name="iconTint">@color/eyes</item>
         <item name="android:minWidth">@dimen/icon</item>
         <item name="android:minHeight">@dimen/icon</item>
     </style>
 
-    <style name="Widget.AppTheme.Search" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+    <style name="Widget.AppTheme.Favorites" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="icon">@drawable/ic_baseline_star_24</item>
         <item name="iconTint">@color/eyes</item>
         <item name="android:minWidth">@dimen/icon</item>

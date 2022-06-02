@@ -5,15 +5,29 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import ru.netology.nmedia.R
+import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.PostContentFragmentBinding
 import ru.netology.nmedia.databinding.ReceptMainFragmentBinding
 
 
 class ReceptMainFragment : Fragment() {
 
-    private val args by navArgs<ReceptMainFragmentArgs>()
+    private val viewModel by viewModels<PostViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.navigateToReceptEvent.observe(this) {initialContent ->
+            val directions = ReceptMainFragmentDirections.toPostContentFragment(initialContent)
+            findNavController().navigate(directions)
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,25 +35,10 @@ class ReceptMainFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) = ReceptMainFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
         binding.groupKitchen.setOnClickListener {
-            findNavController()
+            findNavController().navigate(R.id.action_receptMainFragment_to_feedFragment)
         }
         binding.groupBottom.setOnClickListener {
-            findNavController()
+            findNavController().navigate(R.id.action_feedFragment_to_postContentFragment)
         }
     }.root
-
-    private fun onOkButtonClick(binding: PostContentFragmentBinding) {
-        val text = binding.edit.text
-        if (!text.isNullOrBlank()) {
-            val resultBundle = Bundle(1)
-            resultBundle.putString(RESULT_KEY, text.toString())
-            setFragmentResult(REQUEST_KEY, resultBundle)
-        }
-        findNavController().popBackStack()
-    }
-
-    companion object {
-        const val REQUEST_KEY = "requestKey"
-        const val RESULT_KEY = "postNewContent"
-    }
 }
