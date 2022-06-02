@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ReceptMainFragment">
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_kitchen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="panasia,european,american,african" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="search,favorites" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favorites"
+        style="@style/Widget.AppTheme.Favorites"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:contentDescription="@string/description_favorites"
+        android:text="@string/description_favorites"
+        android:textColor="@color/eyes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/panasia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panasia kitchen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/european"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Euro kitchen"
+        app:layout_constraintBottom_toTopOf="@+id/american"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/search"
+        style="@style/Widget.AppTheme.Search"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:contentDescription="@string/description_search"
+        android:text="@string/description_search"
+        android:textColor="@color/eyes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/favorites" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/american"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="American kitchen"
+        app:layout_constraintBottom_toTopOf="@+id/african"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/african"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="African kitchen"
+        app:layout_constraintBottom_toTopOf="@+id/panasia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
