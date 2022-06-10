@@ -64,6 +64,11 @@ class PostViewModel(
         navigateToPostContentEvent.value = post.content
     }
 
+    fun onViewClicked(post: Post) {
+        currentPost.value = post
+        navigateToPostContentEvent.value = post.content
+    }
+
     fun onEditsClicked(content: String) {
         if (content.isBlank()) return
         val post = currentPost.value?.copy(

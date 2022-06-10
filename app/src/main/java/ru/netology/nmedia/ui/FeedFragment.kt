@@ -49,9 +49,14 @@ class FeedFragment : Fragment() {
             viewModel.onEditsClicked(newPostContent)
         }
 
-        viewModel.navigateToPostContentEvent.observe(this) { initialContent ->
-            val directions = FeedFragmentDirections.toPostContentFragment(initialContent)
+        viewModel.navigateToPostContentEvent.observe(this) {
+            val directions = FeedFragmentDirections.toPostViewFragment()
             findNavController().navigate(directions)
+        }
+
+        viewModel.navigateToPostContentEvent.observe(this) {
+            findNavController()
+                .navigate(FeedFragmentDirections.toPostViewFragment())
         }
 
     }

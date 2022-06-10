@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_back.xml" value="0.127" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.168" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1575" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_list_24.xml" value="0.1485" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/post_content_activity.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/post_content_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/post_edit_fragment.xml" value="0.209375" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/post_view_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/recept_main_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/single_post.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/menu/options_menu.xml" value="0.209375" />
