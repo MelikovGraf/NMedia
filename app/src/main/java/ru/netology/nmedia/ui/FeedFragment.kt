@@ -41,6 +41,19 @@ class FeedFragment : Fragment() {
             val directions = FeedFragmentDirections.toPostContentFragment(initialContent)
             findNavController().navigate(directions)
         }
+
+        setFragmentResultListener(requestKey = PostEditFragment.REQUEST_KEY) { requestKey, bundle ->
+            if (requestKey != PostEditFragment.REQUEST_KEY) return@setFragmentResultListener
+            val newPostContent =
+                bundle.getString(PostEditFragment.RESULT_KEY) ?: return@setFragmentResultListener
+            viewModel.onEditsClicked(newPostContent)
+        }
+
+        viewModel.navigateToPostContentEvent.observe(this) { initialContent ->
+            val directions = FeedFragmentDirections.toPostContentFragment(initialContent)
+            findNavController().navigate(directions)
+        }
+
     }
 
     override fun onCreateView(

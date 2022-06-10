@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/receptMainFragment">
+    app:startDestination="@id/feedFragment">
 
     <fragment
         android:id="@+id/feedFragment"
@@ -15,6 +15,12 @@
         <action
             android:id="@+id/action_feedFragment_to_postContentFragment"
             app:destination="@id/postContentFragment" />
+        <action
+            android:id="@+id/to_postEditFragment"
+            app:destination="@id/postEditFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_postEditFragment"
+            app:destination="@id/postEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/postContentFragment"
@@ -26,21 +32,12 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/receptMainFragment"
-        android:name="ru.netology.nmedia.ui.ReceptMainFragment"
-        tools:layout="@layout/recept_main_fragment">
+        android:id="@+id/postEditFragment"
+        android:name="ru.netology.nmedia.ui.PostEditFragment"
+        tools:layout="@layout/post_content_fragment">
         <argument
-            android:name="initialRecept"
+            android:name="initialContent"
             app:argType="string"
             app:nullable="true" />
-        <action
-            android:id="@+id/recept_to_feedFragment"
-            app:destination="@id/postContentFragment" />
-        <action
-            android:id="@+id/toPostContentFragment"
-            app:destination="@id/postContentFragment" />
-        <action
-            android:id="@+id/action_receptMainFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
     </fragment>
 </navigation>

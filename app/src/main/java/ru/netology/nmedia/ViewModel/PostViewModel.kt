@@ -64,4 +64,21 @@ class PostViewModel(
         navigateToPostContentEvent.value = post.content
     }
 
+    fun onEditsClicked(content: String) {
+        if (content.isBlank()) return
+        val post = currentPost.value?.copy(
+            content = content
+        ) ?: Post(
+            id = PostRepository.NEW_POST_ID,
+            author = "Graf Melikov",
+            content = "Hello",
+            published = "06 May 17:36",
+            likes = 0,
+            repost = 0,
+            likedByMe = false
+        )
+        repository.save(post)
+        currentPost.value = null
+    }
+
 }
