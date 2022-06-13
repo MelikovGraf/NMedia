@@ -12,6 +12,7 @@ import ru.netology.nmedia.Adapter.PostsAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.FeedFragmentBinding
+import ru.netology.nmedia.databinding.ItemBinding
 
 class FeedFragment : Fragment() {
 
@@ -50,13 +51,12 @@ class FeedFragment : Fragment() {
         }
 
         viewModel.navigateToPostContentEvent.observe(this) {
-            val directions = FeedFragmentDirections.toPostViewFragment()
+            val directions = FeedFragmentDirections.toPostViewFragment(this.id.toLong())
             findNavController().navigate(directions)
         }
 
-        viewModel.navigateToPostContentEvent.observe(this) {
-            findNavController()
-                .navigate(FeedFragmentDirections.toPostViewFragment())
+        setFragmentResultListener(requestKey = PostViewFragment.REQUEST_KEY) { requestKey, bundle ->
+            if (requestKey != PostViewFragment.REQUEST_KEY) return@setFragmentResultListener
         }
 
     }
@@ -71,6 +71,15 @@ class FeedFragment : Fragment() {
         binding.list.adapter = adapter
         viewModel.data.observe(viewLifecycleOwner) { posts ->
             adapter.submitList(posts)
+        }
+
+        val viewHolder = PostsAdapter.ViewHolder(ItemBinding.inflate(layoutInflater), viewModel)
+        viewModel.data.observe(viewLifecycleOwner) { posts ->
+            val post = posts.find { true } ?: run {
+                findNavController().navigateUp() // the post was deleted, close the fragment
+                return@observe
+            }
+            viewHolder.bind(post)
         }
 
         binding.fab.setOnClickListener {

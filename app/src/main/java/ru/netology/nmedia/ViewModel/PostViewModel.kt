@@ -9,6 +9,7 @@ import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.PostRepositoryImpl
 import ru.netology.nmedia.db.AppDB
+import ru.netology.nmedia.ui.FeedFragment
 
 class PostViewModel(
     application: Application

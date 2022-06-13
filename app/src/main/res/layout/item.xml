@@ -142,4 +142,14 @@
         app:barrierDirection="start"
         app:layout_constraintTop_toTopOf="@id/avatar" />
 
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintTop_toBottomOf="@+id/authorDate" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
