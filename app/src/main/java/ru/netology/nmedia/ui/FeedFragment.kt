@@ -73,15 +73,6 @@ class FeedFragment : Fragment() {
             adapter.submitList(posts)
         }
 
-        val viewHolder = PostsAdapter.ViewHolder(ItemBinding.inflate(layoutInflater), viewModel)
-        viewModel.data.observe(viewLifecycleOwner) { posts ->
-            val post = posts.find { true } ?: run {
-                findNavController().navigateUp() // the post was deleted, close the fragment
-                return@observe
-            }
-            viewHolder.bind(post)
-        }
-
         binding.fab.setOnClickListener {
             viewModel.onAddClicked()
         }
