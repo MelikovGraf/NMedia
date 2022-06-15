@@ -1,7 +1,6 @@
 package ru.netology.nmedia.Adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -70,6 +69,10 @@ internal class PostsAdapter(
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
             binding.menu.setOnClickListener { popupMenu.show() }
             binding.repostIcon.setOnClickListener { listener.onShareClicked(post) }
+            binding.avatar.setOnClickListener { listener.onViewClicked(post.content) }
+            binding.authorDate.setOnClickListener { listener.onViewClicked(post.content) }
+            binding.authorName.setOnClickListener { listener.onViewClicked(post.content) }
+            binding.authorText.setOnClickListener { listener.onViewClicked(post.content) }
         }
 
         fun bind(post: Post) {

@@ -30,14 +30,14 @@ class PostEditFragment : Fragment() {
         val text = binding.edit.text
         if (!text.isNullOrBlank()) {
             val resultBundle = Bundle(1)
-            resultBundle.putString(RESULT_KEY, text.toString())
-            setFragmentResult(REQUEST_KEY, resultBundle)
+            resultBundle.putString(RESULT_KE, text.toString())
+            setFragmentResult(REQUEST_KE, resultBundle)
         }
         findNavController().popBackStack()
     }
 
     companion object {
-        const val REQUEST_KEY = "requestKey"
-        const val RESULT_KEY = "postNewContent"
+        const val REQUEST_KE = "requestKe"
+        const val RESULT_KE = "postNewConten"
     }
 }

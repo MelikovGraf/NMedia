@@ -9,7 +9,6 @@ import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.PostRepositoryImpl
 import ru.netology.nmedia.db.AppDB
-import ru.netology.nmedia.ui.FeedFragment
 
 class PostViewModel(
     application: Application
@@ -25,8 +24,6 @@ class PostViewModel(
 
     val navigateToPostContentEvent = SingleLiveEvent<String>()
 
-    val navigateToReceptEvent = SingleLiveEvent<String>()
-
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?>(null)
@@ -36,19 +33,18 @@ class PostViewModel(
     }
 
     fun onSaveClicked(content: String) {
-        if (content.isBlank()) return
         val post = currentPost.value?.copy(
             content = content
         ) ?: Post(
-            id = PostRepository.NEW_POST_ID,
-            author = "Graf Melikov",
-            content = "Hello",
-            published = "06 May 17:36",
-            likes = 0,
-            repost = 0,
-            likedByMe = false
+            id = currentPost.value!!.id,
+            author = currentPost.value!!.author,
+            content = currentPost.value!!.content,
+            published = currentPost.value!!.published,
+            likes = currentPost.value!!.likes,
+            repost = currentPost.value!!.repost,
+            likedByMe = currentPost.value!!.likedByMe
         )
-        repository.save(post)
+        repository.view(post)
         currentPost.value = null
     }
 
@@ -65,9 +61,19 @@ class PostViewModel(
         navigateToPostContentEvent.value = post.content
     }
 
-    fun onViewClicked(post: Post) {
-        currentPost.value = post
-        navigateToPostContentEvent.value = post.content
+    override fun onViewClicked(content: String) {
+        val post = currentPost.value?.copy(
+            content = content
+        ) ?: Post(
+            id = PostRepository.NEW_POST_ID,
+            author = "Graf Melikov",
+            content = "Hello",
+            published = "06 May 17:36",
+            likes = 0,
+            repost = 0,
+            likedByMe = false
+        )
+
     }
 
     fun onEditsClicked(content: String) {

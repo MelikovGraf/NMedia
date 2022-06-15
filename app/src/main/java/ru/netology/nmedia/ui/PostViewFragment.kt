@@ -37,7 +37,6 @@ class PostViewFragment : Fragment() {
     }.root
 
     companion object {
-        const val REQUEST_KEY = "requestKey"
-        const val RESULT_KEY = "postNewContent"
+        const val REQUEST_KEYS = "requestKeys"
     }
 }

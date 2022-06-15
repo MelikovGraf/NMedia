@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="-16dp"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="0dp"
         tools:listitem="@layout/item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

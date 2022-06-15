@@ -12,7 +12,6 @@ import ru.netology.nmedia.Adapter.PostsAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.FeedFragmentBinding
-import ru.netology.nmedia.databinding.ItemBinding
 
 class FeedFragment : Fragment() {
 
@@ -43,10 +42,10 @@ class FeedFragment : Fragment() {
             findNavController().navigate(directions)
         }
 
-        setFragmentResultListener(requestKey = PostEditFragment.REQUEST_KEY) { requestKey, bundle ->
-            if (requestKey != PostEditFragment.REQUEST_KEY) return@setFragmentResultListener
+        setFragmentResultListener(requestKey = PostEditFragment.REQUEST_KE) { requestKey, bundle ->
+            if (requestKey != PostEditFragment.REQUEST_KE) return@setFragmentResultListener
             val newPostContent =
-                bundle.getString(PostEditFragment.RESULT_KEY) ?: return@setFragmentResultListener
+                bundle.getString(PostEditFragment.RESULT_KE) ?: return@setFragmentResultListener
             viewModel.onEditsClicked(newPostContent)
         }
 
@@ -55,8 +54,11 @@ class FeedFragment : Fragment() {
             findNavController().navigate(directions)
         }
 
-        setFragmentResultListener(requestKey = PostViewFragment.REQUEST_KEY) { requestKey, bundle ->
-            if (requestKey != PostViewFragment.REQUEST_KEY) return@setFragmentResultListener
+        setFragmentResultListener(requestKey = PostViewFragment.REQUEST_KEYS) { requestKey, bundle ->
+            if (requestKey != PostViewFragment.REQUEST_KEYS) return@setFragmentResultListener
+            val newPostContent =
+                bundle.getString(PostViewFragment.REQUEST_KEYS) ?: return@setFragmentResultListener
+            viewModel.onViewClicked(newPostContent)
         }
 
     }

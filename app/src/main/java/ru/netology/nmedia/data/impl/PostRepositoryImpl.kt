@@ -20,12 +20,16 @@ class PostRepositoryImpl(
             dao.updateContentById(post.id, post.content)
     }
 
+    override fun view(post: Post) {
+        if(post.id == PostRepository.NEW_POST_ID) dao.insert(post.toEntity())
+    }
+
     override fun delete(id: Long) = dao.removeById(id)
 
     override fun like(id: Long) = dao.likeById(id)
 
     override fun edit(post: Post) {
-        TODO("Not yet implemented")
+        if(post.id == PostRepository.NEW_POST_ID) dao.insert(post.toEntity())
     }
 
     override fun repost(postId: Long) {
