@@ -69,10 +69,10 @@ internal class PostsAdapter(
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
             binding.menu.setOnClickListener { popupMenu.show() }
             binding.repostIcon.setOnClickListener { listener.onShareClicked(post) }
-            binding.avatar.setOnClickListener { listener.onViewClicked(post.content) }
-            binding.authorDate.setOnClickListener { listener.onViewClicked(post.content) }
-            binding.authorName.setOnClickListener { listener.onViewClicked(post.content) }
-            binding.authorText.setOnClickListener { listener.onViewClicked(post.content) }
+            binding.avatar.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorDate.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorName.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorText.setOnClickListener { listener.onViewClicked(post) }
         }
 
         fun bind(post: Post) {

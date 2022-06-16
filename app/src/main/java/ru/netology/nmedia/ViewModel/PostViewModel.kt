@@ -24,6 +24,8 @@ class PostViewModel(
 
     val navigateToPostContentEvent = SingleLiveEvent<String>()
 
+    val navigateToPostViewEvent = SingleLiveEvent<Long>()
+
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?>(null)
@@ -61,19 +63,8 @@ class PostViewModel(
         navigateToPostContentEvent.value = post.content
     }
 
-    override fun onViewClicked(content: String) {
-        val post = currentPost.value?.copy(
-            content = content
-        ) ?: Post(
-            id = PostRepository.NEW_POST_ID,
-            author = "Graf Melikov",
-            content = "Hello",
-            published = "06 May 17:36",
-            likes = 0,
-            repost = 0,
-            likedByMe = false
-        )
-
+    override fun onViewClicked(post: Post) {
+        navigateToPostViewEvent.value = post.id
     }
 
     fun onEditsClicked(content: String) {

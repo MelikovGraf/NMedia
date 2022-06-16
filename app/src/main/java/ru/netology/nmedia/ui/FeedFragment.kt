@@ -49,18 +49,10 @@ class FeedFragment : Fragment() {
             viewModel.onEditsClicked(newPostContent)
         }
 
-        viewModel.navigateToPostContentEvent.observe(this) {
+        viewModel.navigateToPostViewEvent.observe(this) {
             val directions = FeedFragmentDirections.toPostViewFragment(this.id.toLong())
             findNavController().navigate(directions)
         }
-
-        setFragmentResultListener(requestKey = PostViewFragment.REQUEST_KEYS) { requestKey, bundle ->
-            if (requestKey != PostViewFragment.REQUEST_KEYS) return@setFragmentResultListener
-            val newPostContent =
-                bundle.getString(PostViewFragment.REQUEST_KEYS) ?: return@setFragmentResultListener
-            viewModel.onViewClicked(newPostContent)
-        }
-
     }
 
     override fun onCreateView(
@@ -79,8 +71,4 @@ class FeedFragment : Fragment() {
             viewModel.onAddClicked()
         }
     }.root
-
-    companion object {
-        const val TAG = "Feed Fragment"
-    }
 }
