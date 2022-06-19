@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import ru.netology.nmedia.Adapter.PostsAdapter
 import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.ItemBinding
@@ -14,6 +15,7 @@ import ru.netology.nmedia.databinding.PostViewFragmentBinding
 
 class PostViewFragment : Fragment() {
 
+    private val args by navArgs<PostViewFragmentArgs>()
     private val viewModel by viewModels<PostViewModel>()
 
     override fun onCreateView(
@@ -26,7 +28,7 @@ class PostViewFragment : Fragment() {
         }
         val viewHolder = PostsAdapter.ViewHolder(ItemBinding.inflate(layoutInflater), viewModel)
         viewModel.data.observe(viewLifecycleOwner) { posts ->
-            val post = posts.find { true } ?: run {
+            val post = posts.find { it.id == args.viewContent } ?: run {
                 findNavController().navigateUp() // the post was deleted, close the fragment
                 return@observe
             }

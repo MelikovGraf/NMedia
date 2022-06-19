@@ -51,7 +51,7 @@
         android:name="ru.netology.nmedia.ui.PostViewFragment"
         tools:layout="@layout/post_view_fragment">
         <argument
-            android:name="ViewContent"
-            app:argType="long" />
+            android:name="viewContent"
+            app:argType="long"/>
     </fragment>
 </navigation>
