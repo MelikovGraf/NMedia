@@ -35,18 +35,19 @@ class PostViewModel(
     }
 
     fun onSaveClicked(content: String) {
+        if (content.isBlank()) return
         val post = currentPost.value?.copy(
             content = content
         ) ?: Post(
-            id = currentPost.value!!.id,
-            author = currentPost.value!!.author,
-            content = currentPost.value!!.content,
-            published = currentPost.value!!.published,
-            likes = currentPost.value!!.likes,
-            repost = currentPost.value!!.repost,
-            likedByMe = currentPost.value!!.likedByMe
+            id = PostRepository.NEW_POST_ID,
+            author = "Graf Melikov",
+            content = content,
+            published = "06 May 17:36",
+            likes = 0,
+            repost = 0,
+            likedByMe = false
         )
-        repository.view(post)
+        repository.save(post)
         currentPost.value = null
     }
 
@@ -80,7 +81,7 @@ class PostViewModel(
             repost = 0,
             likedByMe = false
         )
-        repository.save(post)
+        repository.edit(post)
         currentPost.value = null
     }
 

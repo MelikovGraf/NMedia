@@ -21,6 +21,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/app_activity.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/edit_content_activity.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/feed_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_first_activity.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/intent_resource.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/item.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/post_content_activity.xml" value="0.209375" />
@@ -30,6 +31,8 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/recept_main_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/layout/single_post.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/menu/options_menu.xml" value="0.209375" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.141" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.141" />
       </map>
     </option>
   </component>
