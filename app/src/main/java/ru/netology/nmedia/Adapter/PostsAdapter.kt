@@ -1,23 +1,23 @@
-package ru.netology.NMedia.data.impl
+package ru.netology.nmedia.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.netology.NMedia.R
-import ru.netology.NMedia.data.Post
-import ru.netology.NMedia.databinding.ItemBinding
+import ru.netology.nmedia.R
+import ru.netology.nmedia.data.Post
+import ru.netology.nmedia.databinding.ItemBinding
 
 internal class PostsAdapter(
-    private val onLikeClicked: (Post) -> Unit,
-    private val onRepostClicked: (Post) -> Unit,
+    private val interactionListener: PostInteractionListener,
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, onLikeClicked, onRepostClicked)
+        return ViewHolder(binding, interactionListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,11 +27,29 @@ internal class PostsAdapter(
 
     class ViewHolder(
         private val binding: ItemBinding,
-        onLikeClicked: (Post) -> Unit,
-        onRepostClicked: (Post) -> Unit,
+        listener: PostInteractionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
+
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.menu).apply {
+                inflate(R.menu.options_menu)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onRemoveClicked(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            listener.onEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
 
         private fun getCount(value: Int): String {
             val thousand = value.toDouble() / 1000
@@ -48,24 +66,28 @@ internal class PostsAdapter(
         }
 
         init {
-            binding.likeIcon.setOnClickListener { onLikeClicked(post) }
-            binding.repostIcon.setOnClickListener { onRepostClicked(post) }
+            binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
+            binding.menu.setOnClickListener { popupMenu.show() }
+            binding.repostIcon.setOnClickListener { listener.onShareClicked(post) }
+            binding.avatar.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorDate.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorName.setOnClickListener { listener.onViewClicked(post) }
+            binding.authorText.setOnClickListener { listener.onViewClicked(post) }
         }
 
         fun bind(post: Post) {
             this.post = post
             with(binding) {
                 authorName.text = post.author
-                authorDate.text = post.date
+                authorDate.text = post.published
                 authorText.text = post.content
-                if (post.likedByMe) {
-                    likesCount.text = getCount(post.likes + 1)
-                    likeIcon.setImageResource(R.drawable.ic_like)
+                likeIcon.text = if (post.likedByMe) {
+                    getCount(post.likes + 1)
                 } else {
-                    likesCount.text = getCount(post.likes)
-                    likeIcon.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    getCount(post.likes)
                 }
-                repostCount.text = getCount(post.repost)
+                likeIcon.isChecked = post.likedByMe
+                repostIcon.text = getCount(post.repost + 1)
             }
         }
     }
