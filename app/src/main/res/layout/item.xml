@@ -46,6 +46,40 @@
         app:layout_constraintTop_toBottomOf="@id/authorName"
         tools:text="19.04.2022" />
 
+    <View
+        android:id="@+id/videoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/black"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/likeIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorText"
+        tools:context=".ui.intent.intentVideoActivity" />
+
+    <View
+        android:id="@+id/videoButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@color/teal_700"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@id/videoLayout"
+        app:layout_constraintEnd_toEndOf="@id/videoLayout"
+        app:layout_constraintStart_toStartOf="@id/videoLayout"
+        app:layout_constraintTop_toTopOf="@id/videoLayout"
+        tools:context=".ui.intent.intentVideoActivity" />
+
+    <androidx.constraintlayout.widget.Group
+
+        android:id="@+id/videoGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="videoLayout, videoButton"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/authorText"
@@ -53,12 +87,11 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/eyes"
+        app:layout_constraintBottom_toTopOf="@id/videoLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
-        tools:text="@tools:sample/lorem/random" />
-
+        tools:text="@string/app_name" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -82,7 +115,8 @@
         android:text="@string/value_iconText"
         android:textColor="@color/eyes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/videoLayout" />
 
     <!--    repostIcon-->
     <com.google.android.material.button.MaterialButton

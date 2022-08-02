@@ -3,6 +3,7 @@ package ru.netology.nmedia.Adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -73,6 +74,7 @@ internal class PostsAdapter(
             binding.authorDate.setOnClickListener { listener.onViewClicked(post) }
             binding.authorName.setOnClickListener { listener.onViewClicked(post) }
             binding.authorText.setOnClickListener { listener.onViewClicked(post) }
+            binding.videoGroup.setOnClickListener { listener.onPlayVideoClicked(post) }
         }
 
         fun bind(post: Post) {
@@ -88,6 +90,7 @@ internal class PostsAdapter(
                 }
                 likeIcon.isChecked = post.likedByMe
                 repostIcon.text = getCount(post.repost + 1)
+                videoGroup.isVisible = post.video != null
             }
         }
     }
