@@ -22,7 +22,6 @@ class PostViewModel(
 
     val sharePostContent = SingleLiveEvent<String>()
     val navigateToPostContentEvent = SingleLiveEvent<String>()
-    val navigateToEditPostContentEvent = SingleLiveEvent<String>()
     val navigateToPostViewEvent = SingleLiveEvent<Long>()
     val playVideoEvent = SingleLiveEvent<String>()
 
@@ -46,9 +45,27 @@ class PostViewModel(
             likes = 0,
             repost = 0,
             likedByMe = false,
-            video = "http:url"
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         )
         repository.save(post)
+        currentPost.value = null
+    }
+
+    fun onEditsClicked(content: String) {
+        if (content.isBlank()) return
+        val post = currentPost.value?.copy(
+            content = content
+        ) ?: Post(
+            id = PostRepository.NEW_POST_ID,
+            author = "Graf Melikov",
+            content = "Hello",
+            published = "12.01.22",
+            likes = 0,
+            repost = 0,
+            likedByMe = false,
+            video = "http:url"
+        )
+        repository.edit(post)
         currentPost.value = null
     }
 
@@ -75,23 +92,4 @@ class PostViewModel(
         }
         playVideoEvent.value = url
     }
-
-    fun onEditsClicked(content: String) {
-        if (content.isBlank()) return
-        val post = currentPost.value?.copy(
-            content = content
-        ) ?: Post(
-            id = PostRepository.NEW_POST_ID,
-            author = "Graf Melikov",
-            content = "Hello",
-            published = "12.01.22",
-            likes = 0,
-            repost = 0,
-            likedByMe = false,
-            video = "http:url"
-        )
-        repository.edit(post)
-        currentPost.value = null
-    }
-
 }

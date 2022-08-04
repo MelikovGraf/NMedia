@@ -18,7 +18,8 @@ class PostContentFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ) = PostContentFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
+    ) = PostContentFragmentBinding.inflate(layoutInflater, container, false).also {
+            binding ->
         binding.edit.setText(args.initialContent)
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {

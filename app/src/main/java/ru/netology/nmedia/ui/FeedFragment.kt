@@ -5,17 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.activity.result.launch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.Adapter.PostsAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.ViewModel.PostViewModel
 import ru.netology.nmedia.databinding.FeedFragmentBinding
-import ru.netology.nmedia.ui.intent.intentEditContentActivity
 
 class FeedFragment : Fragment() {
 
@@ -24,17 +21,7 @@ class FeedFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val intentContentLauncher = registerForActivityResult(
-//            intentEditContentActivity.ResultContract) { postContent ->
-//            postContent ?: return@registerForActivityResult
-//            viewModel.onSaveClicked(postContent)
-//
-//        }
-//        viewModel.navigateToPostContentEvent.observe(this) {
-//            intentContentLauncher.launch()
-//        }
-
-        viewModel.playVideoEvent.observe(this) { url ->
+        viewModel.playVideoEvent.observe(this) {
             val intent = Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://www.youtube.com/watch?v=WhWc3b3KhnY"))
             startActivity(intent)

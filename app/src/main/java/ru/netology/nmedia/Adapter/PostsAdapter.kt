@@ -33,6 +33,20 @@ internal class PostsAdapter(
 
         private lateinit var post: Post
 
+        private fun getCount(value: Int): String {
+            val thousand = value.toDouble() / 1000
+            val thousandCent = ((thousand - thousand.toInt()) * 10)
+            val hundredThousand = value.toDouble() / 100
+            val million = value.toDouble() / 1_000_000
+            val millionCent = ((million - million.toInt()) * 10)
+            return when {
+                (value < 1000) -> value.toString()
+                (value in 1000..99999) -> "${thousand.toInt()}.${thousandCent.toInt()}K"
+                (value in 100000..999999) -> "${hundredThousand.toInt()}K"
+                else -> "${million.toInt()}.${millionCent.toInt()}M"
+            }
+        }
+
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.menu).apply {
                 inflate(R.menu.options_menu)
@@ -52,20 +66,6 @@ internal class PostsAdapter(
             }
         }
 
-        private fun getCount(value: Int): String {
-            val thousand = value.toDouble() / 1000
-            val thousandCent = ((thousand - thousand.toInt()) * 10)
-            val hundredThousand = value.toDouble() / 100
-            val million = value.toDouble() / 1_000_000
-            val millionCent = ((million - million.toInt()) * 10)
-            return when {
-                (value < 1000) -> value.toString()
-                (value in 1000..99999) -> "${thousand.toInt()}.${thousandCent.toInt()}K"
-                (value in 100000..999999) -> "${hundredThousand.toInt()}K"
-                else -> "${million.toInt()}.${millionCent.toInt()}M"
-            }
-        }
-
         init {
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
             binding.menu.setOnClickListener { popupMenu.show() }
@@ -74,7 +74,8 @@ internal class PostsAdapter(
             binding.authorDate.setOnClickListener { listener.onViewClicked(post) }
             binding.authorName.setOnClickListener { listener.onViewClicked(post) }
             binding.authorText.setOnClickListener { listener.onViewClicked(post) }
-            binding.videoGroup.setOnClickListener { listener.onPlayVideoClicked(post) }
+            binding.videoLayout.setOnClickListener { listener.onPlayVideoClicked(post) }
+            binding.videoButton.setOnClickListener { listener.onPlayVideoClicked(post) }
         }
 
         fun bind(post: Post) {
@@ -90,7 +91,7 @@ internal class PostsAdapter(
                 }
                 likeIcon.isChecked = post.likedByMe
                 repostIcon.text = getCount(post.repost + 1)
-                videoGroup.isVisible = post.video != null
+                videoLayout.isVisible = post.video != null
             }
         }
     }
