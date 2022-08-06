@@ -7,7 +7,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.databinding.IntentResourceBinding
 
-class intentVideoActivity : AppCompatActivity() {
+class intentSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

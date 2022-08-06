@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">NMedia</string>
+    <string name="app_name">Орхидея</string>
     <string name="hello">Привет, Мир!</string>
     <string name="description_post_author_avatar">Аватар автора поста</string>
     <string name="description_post_menu">Меню поста</string>
@@ -24,4 +24,6 @@
     <string name="channel_remote_description">Сервер передал данные вот такие</string>
     <string name="description_favorites">Избранное</string>
     <string name="description_search">Поиск</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

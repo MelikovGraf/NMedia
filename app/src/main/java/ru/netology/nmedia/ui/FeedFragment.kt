@@ -1,5 +1,6 @@
 package ru.netology.nmedia.ui
 
+import android.app.SearchManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,6 +28,13 @@ class FeedFragment : Fragment() {
             startActivity(intent)
         }
 
+        viewModel.searchEvent.observe(this) {
+            val intent = Intent(Intent.ACTION_WEB_SEARCH).apply {
+                putExtra(SearchManager.QUERY, "Как собрать нормальное Android приложение")
+            }
+            startActivity(intent)
+        }
+
         viewModel.sharePostContent.observe(this) { postContent ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -37,11 +45,9 @@ class FeedFragment : Fragment() {
             startActivity(shareIntent)
         }
 
-        setFragmentResultListener(requestKey = PostContentFragment.REQUEST_KEY) { requestKey, bundle ->
-            if (requestKey != PostContentFragment.REQUEST_KEY) return@setFragmentResultListener
-            val newPostContent =
-                bundle.getString(PostContentFragment.RESULT_KEY) ?: return@setFragmentResultListener
-            viewModel.onSaveClicked(newPostContent)
+        viewModel.navigateToPostContentEvent.observe(this) { initialContent ->
+            val directions = FeedFragmentDirections.toPostContentFragment(initialContent)
+            findNavController().navigate(directions)
         }
 
         viewModel.navigateToPostContentEvent.observe(this) { initialContent ->
@@ -49,10 +55,19 @@ class FeedFragment : Fragment() {
             findNavController().navigate(directions)
         }
 
-        setFragmentResultListener(requestKey = PostEditFragment.REQUEST_KE) { requestKey, bundle ->
-            if (requestKey != PostEditFragment.REQUEST_KE) return@setFragmentResultListener
+        setFragmentResultListener(requestKey = PostContentFragment.REQUEST_KEY_SAVE) { requestKey, bundle ->
+            if (requestKey != PostContentFragment.REQUEST_KEY_SAVE) return@setFragmentResultListener
             val newPostContent =
-                bundle.getString(PostEditFragment.RESULT_KE) ?: return@setFragmentResultListener
+                bundle.getString(PostContentFragment.RESULT_KEY_SAVE)
+                    ?: return@setFragmentResultListener
+            viewModel.onSaveClicked(newPostContent)
+        }
+
+        setFragmentResultListener(requestKey = PostContentFragment.REQUEST_KEY_EDIT) { requestKey, bundle ->
+            if (requestKey != PostContentFragment.REQUEST_KEY_EDIT) return@setFragmentResultListener
+            val newPostContent =
+                bundle.getString(PostContentFragment.RESULT_KEY_EDIT)
+                    ?: return@setFragmentResultListener
             viewModel.onEditsClicked(newPostContent)
         }
 

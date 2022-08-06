@@ -26,7 +26,7 @@
         android:layout_marginEnd="0dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/authorDate"
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
@@ -40,11 +40,11 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toBottomOf="@id/authorName"
-        tools:text="19.04.2022" />
+        tools:text="19.04.20221111111111111111222222222222" />
 
     <View
         android:id="@+id/videoLayout"
@@ -173,15 +173,5 @@
         android:layout_height="0dp"
         app:barrierDirection="start"
         app:layout_constraintTop_toTopOf="@id/avatar" />
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="@+id/avatar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintTop_toBottomOf="@+id/authorDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

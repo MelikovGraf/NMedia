@@ -47,6 +47,7 @@ internal class PostsAdapter(
             }
         }
 
+        // Слушатели кнопок меню
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.menu).apply {
                 inflate(R.menu.options_menu)
@@ -60,12 +61,17 @@ internal class PostsAdapter(
                             listener.onEditClicked(post)
                             true
                         }
+                        R.id.search -> {
+                            listener.onSearchClicked(post)
+                            true
+                        }
                         else -> false
                     }
                 }
             }
         }
 
+        // Слушатели кнопок
         init {
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
             binding.menu.setOnClickListener { popupMenu.show() }
@@ -78,17 +84,14 @@ internal class PostsAdapter(
             binding.videoButton.setOnClickListener { listener.onPlayVideoClicked(post) }
         }
 
+        // Отображение данных
         fun bind(post: Post) {
             this.post = post
             with(binding) {
                 authorName.text = post.author
                 authorDate.text = post.published
                 authorText.text = post.content
-                likeIcon.text = if (post.likedByMe) {
-                    getCount(post.likes + 1)
-                } else {
-                    getCount(post.likes)
-                }
+                likeIcon.text = getCount(post.likes)
                 likeIcon.isChecked = post.likedByMe
                 repostIcon.text = getCount(post.repost + 1)
                 videoLayout.isVisible = post.video != null
@@ -96,6 +99,7 @@ internal class PostsAdapter(
         }
     }
 
+    // Сравнивание объектов
     private object DiffCallback : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post) =
             oldItem.id == newItem.id

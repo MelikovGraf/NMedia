@@ -3,12 +3,14 @@ package ru.netology.nmedia.ViewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.*
 import no.nordicsemi.android.blinky.viewmodels.SingleLiveEvent
 import ru.netology.nmedia.Adapter.PostInteractionListener
 import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.PostRepositoryImpl
 import ru.netology.nmedia.db.AppDB
+import java.util.*
 
 class PostViewModel(
     application: Application
@@ -24,10 +26,43 @@ class PostViewModel(
     val navigateToPostContentEvent = SingleLiveEvent<String>()
     val navigateToPostViewEvent = SingleLiveEvent<Long>()
     val playVideoEvent = SingleLiveEvent<String>()
+    val searchEvent = SingleLiveEvent<Post>()
 
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?>(null)
+
+    override fun onLikeClicked(post: Post) = repository.like(post.id)
+
+    override fun onRemoveClicked(post: Post) = repository.delete(post.id)
+
+    override fun onShareClicked(post: Post) {
+        sharePostContent.value = post.content
+    }
+
+    override fun onEditClicked(post: Post) {
+        currentPost.value = post
+        navigateToPostContentEvent.value = post.content
+    }
+
+    override fun onPlayVideoClicked(post: Post) {
+        val url = requireNotNull(post.video) {
+            "Check not null"
+        }
+        playVideoEvent.value = url
+    }
+
+    override fun onSearchClicked(post: Post) {
+        val url = requireNotNull(post) {
+            "Check not null"
+        }
+        searchEvent.value = url
+    }
+
+    override fun onViewClicked(post: Post) {
+        repository.view(post)
+        navigateToPostViewEvent.value = post.id
+    }
 
     fun onAddClicked() {
         navigateToPostContentEvent.call()
@@ -41,7 +76,6 @@ class PostViewModel(
             id = PostRepository.NEW_POST_ID,
             author = "Graf Melikov",
             content = content,
-            published = "06 May 17:36",
             likes = 0,
             repost = 0,
             likedByMe = false,
@@ -59,7 +93,6 @@ class PostViewModel(
             id = PostRepository.NEW_POST_ID,
             author = "Graf Melikov",
             content = "Hello",
-            published = "12.01.22",
             likes = 0,
             repost = 0,
             likedByMe = false,
@@ -67,29 +100,5 @@ class PostViewModel(
         )
         repository.edit(post)
         currentPost.value = null
-    }
-
-    override fun onLikeClicked(post: Post) = repository.like(post.id)
-
-    override fun onRemoveClicked(post: Post) = repository.delete(post.id)
-
-    override fun onShareClicked(post: Post) {
-        sharePostContent.value = post.content
-    }
-
-    override fun onEditClicked(post: Post) {
-        currentPost.value = post
-        navigateToPostContentEvent.value = post.content
-    }
-
-    override fun onViewClicked(post: Post) {
-        navigateToPostViewEvent.value = post.id
-    }
-
-    override fun onPlayVideoClicked(post: Post) {
-        val url = requireNotNull(post.video) {
-            "Check not null"
-        }
-        playVideoEvent.value = url
     }
 }

@@ -10,24 +10,13 @@
         android:name="ru.netology.nmedia.ui.FeedFragment"
         tools:layout="@layout/feed_fragment">
         <action
-            android:id="@+id/to_postContentFragment"
+            android:id="@+id/toPostContentFragment"
             app:destination="@id/postContentFragment" />
         <action
-            android:id="@+id/action_feedFragment_to_postContentFragment"
-            app:destination="@id/postContentFragment" />
-        <action
-            android:id="@+id/to_postEditFragment"
-            app:destination="@id/postEditFragment" />
-        <action
-            android:id="@+id/action_feedFragment_to_postEditFragment"
-            app:destination="@id/postEditFragment" />
-        <action
-            android:id="@+id/to_postViewFragment"
-            app:destination="@id/postViewFragment" />
-        <action
-            android:id="@+id/action_feedFragment_to_postViewFragment"
+            android:id="@+id/toPostViewFragment"
             app:destination="@id/postViewFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/postContentFragment"
         android:name="ru.netology.nmedia.ui.PostContentFragment"
@@ -37,21 +26,14 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
-    <fragment
-        android:id="@+id/postEditFragment"
-        android:name="ru.netology.nmedia.ui.PostEditFragment"
-        tools:layout="@layout/post_edit_fragment">
-        <argument
-            android:name="initialContent"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
+
     <fragment
         android:id="@+id/postViewFragment"
         android:name="ru.netology.nmedia.ui.PostViewFragment"
         tools:layout="@layout/post_view_fragment">
         <argument
             android:name="viewContent"
-            app:argType="long"/>
+            app:argType="long" />
     </fragment>
+
 </navigation>

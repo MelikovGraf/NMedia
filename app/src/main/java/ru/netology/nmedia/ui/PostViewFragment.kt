@@ -23,24 +23,23 @@ class PostViewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ) = PostViewFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
-        binding.itemViewContent.backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
         val viewHolder = PostsAdapter.ViewHolder(ItemBinding.inflate(layoutInflater), viewModel)
         viewModel.data.observe(viewLifecycleOwner) { posts ->
             val post = posts.find { it.id == args.viewContent } ?: run {
-                findNavController().navigateUp() // the post was deleted, close the fragment
+//                findNavController().navigateUp() // the post was deleted, close the fragment
+                binding.itemViewContent
                 return@observe
             }
             viewHolder.bind(post)
-            onButtonClick(binding)
+            findNavController().popBackStack()
         }
     }.root
 
 
-    private fun onButtonClick(binding: PostViewFragmentBinding) {
-        binding.itemViewContent.backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
+
+    companion object {
+        const val REQUEST_KEY_VIEW = "requestKeyVIEW"
+        const val RESULT_KEY_VIEW = "postVIEWContent"
+
     }
 }
