@@ -14,14 +14,13 @@
 9. Дизайн и навигация
 10. Material Design
 11.Intents
-Хранение данных
-Fragments, FragmentManager
-Блок 4: SQL, уведомления и Pushes
-SQL и SQLite
-Библиотека Room
-Notifications & Pushes
+12.Хранение данных
+13.Fragments, FragmentManager
+14. SQL и SQLite
+15. Библиотека Room
+16. Notifications & Pushes
 
-![Иллюстрация к проекту](https://prnt.sc/rfmj5ir8E29O)
+![Иллюстрация к проекту](https://sun9-9.userapi.com/impg/LF3Gdqb7-AIwUNXiUF2fnOPsZAUdaz8ytLkiGQ/9lyq3ea1iRs.jpg?size=421x513&quality=96&sign=695c24983f07b87d87f23529ac8a4542&type=album)
 
 Приложение умеет:
 1. Операции CRUD
