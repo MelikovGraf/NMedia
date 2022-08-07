@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">НМедиа</string>
-    <string name="greeting">Привет НМедиа!</string>
-    <string name="description_post">Пост аватар!</string>
-    <string name="description_post_like">Лайк поста!</string>
+    <string name="app_name">Орхидея</string>
+    <string name="hello">Привет, Мир!</string>
+    <string name="description_post_author_avatar">Аватар автора поста</string>
+    <string name="description_post_menu">Меню поста</string>
+    <string name="description_post_like">Нравится</string>
+    <string name="description_post_share">Поделиться</string>
+    <string name="description_post_save">Сохранить</string>
+    <string name="description_post_cancel">Отменить</string>
+    <string name="description_post_eyes">Просмотры</string>
+    <string name="menu_edit">Изменить</string>
+    <string name="menu_remove">Удалить</string>
+    <string name="post_text">Текст поста</string>
+    <string name="value_iconText">100.1K</string>
+    <string name="chooser_share_post">Поделиться записью</string>
+    <string name="add_post">Добавить пост</string>
+    <string name="chooser_edit_post">Редактировать пост</string>
+    <string name="video_post">Видео</string>
+    <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="notification_user_liked">Пользователь %1$s лайкнул %$2s\'s пост</string>
+    <string name="notification_new_post">Пользователь %1$s опубликовал новый пост: %$2s\'s </string>
+    <string name="channel_remote_name">Сервер передал данные</string>
+    <string name="channel_remote_description">Сервер передал данные вот такие</string>
+    <string name="description_favorites">Избранное</string>
+    <string name="description_search">Поиск</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
