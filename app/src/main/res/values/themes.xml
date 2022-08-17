@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.NMedia" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#FF5289</item>
+        <item name="colorPrimaryVariant">#FF0084</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#FF8EF9</item>
+        <item name="colorSecondaryVariant">#FF5FE5</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >#FF7448</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Widget.AppTheme.Like" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_like_24dp</item>
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <style name="Widget.AppTheme.Share" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_baseline_reply_24</item>
+        <item name="iconTint">@color/share_checkbox</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <style name="Widget.AppTheme.Eyes" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_baseline_remove_red_eye_24</item>
+        <item name="iconTint">@color/eyes</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <style name="Widget.AppTheme.Search" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_search</item>
+        <item name="iconTint">@color/eyes</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <style name="Widget.AppTheme.Favorites" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_baseline_star_24</item>
+        <item name="iconTint">@color/eyes</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <style name="Widget.AppTheme.Menu" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_baseline_list_24</item>
+        <item name="iconTint">@color/eyes</item>
+        <item name="android:minWidth">@dimen/icon</item>
+        <item name="android:minHeight">@dimen/icon</item>
+    </style>
+
+    <dimen name="video">250dp</dimen>
+</resources>

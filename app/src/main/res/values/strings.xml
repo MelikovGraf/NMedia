@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Orchidej.ru</string>
+    <string name="hello">Hello World!</string>
+    <string name="description_post_author_avatar">Post author avatar</string>
+    <string name="description_post_menu">Post menu</string>
+    <string name="description_post_like">Like</string>
+    <string name="description_post_share">Share</string>
+    <string name="description_post_save">Save</string>
+    <string name="description_post_cancel">Cancel</string>
+    <string name="description_post_eyes">Eyes</string>
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">Post Text</string>
+    <string name="menu_edit">Edit</string>
+    <string name="value_iconText">100.1K</string>
+    <string name="chooser_share_post">Share Post</string>
+    <string name="chooser_edit_post">Edit post</string>
+    <string name="add_post">Add post</string>
+    <string name="video_post">Video</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="channel_remote_name">channel_remote_name</string>
+    <string name="notification_user_liked">User %1$s liked %$2s\'s post</string>
+    <string name="notification_new_post">User %1$s public new post: %$2s\'s </string>
+    <string name="channel_remote_description">channel_remote_description</string>
+    <string name="description_favorites">Favorites</string>
+    <string name="description_search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="russian">Russian</string>
+    <string name="african">African</string>
+    <string name="european">European</string>
+    <string name="asian">Asian</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/all_recipes"
+        android:icon="@drawable/ic_like"
+        android:title="@string/description_post_like"
+        android:contentDescription="@string/description_post_like"
+        app:showAsAction = "ifRoom"
+        />
+    <item
+        android:id="@+id/my_recipes"
+        android:icon="@drawable/ic_search"
+        android:title="@string/description_search"
+        android:contentDescription="@string/description_search"
+        app:showAsAction = "ifRoom"
+        />
+    <item
+        android:id="@+id/favorite_recipes"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/title_notifications"
+        android:contentDescription="title_notifications"
+        app:showAsAction = "ifRoom"
+        />
+</menu>
+
+
